@@ -12,7 +12,8 @@ app.use(
     cors({
     origin: process.env.FRONTEND_URL,
     methods: ["POST", "OPTIONS"],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
     })
 );
 
