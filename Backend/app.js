@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: true}));
 dbConnection();
 
 app.use(express.json());
-app.use(errorMiddleware);
 app.use('/api/v1/reservation', reservationRouter);
+app.use(errorMiddleware);
 
 export default app;
