@@ -10,7 +10,7 @@ dotenv.config({path :"./config/config.env"});
 
 app.use(
     cors({
-    origin: ["https://mern-project-frontend-six.vercel.app"],
+    origin: [process.env.FRONTEND_URL],
     methods: ["POST", "OPTIONS"],
     credentials: true
     })
