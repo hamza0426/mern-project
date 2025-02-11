@@ -11,21 +11,24 @@ dotenv.config({path :"./config/config.env"});
 app.use(
     cors({
     origin: ["https://mern-project-frontend-six.vercel.app"],
-    methods: ["POST", "GET", "OPTIONS"],
+    methods: ["POST", "OPTIONS"],
     credentials: true
     })
 );
 
-app.get("/", (req, res) => {
-    res.json("Hello Backend Connected");
-})
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use("/api/v1/reservation", reservationRouter);
+
+app.get("/", (req, res, next) => {return res.status(200).json({
+    success: true,
+    message: "Hello Backend"
+})})
 
 dbConnection();
 
 app.use(express.json());
-app.use('/api/v1/reservation', reservationRouter);
 app.use(errorMiddleware);
 
 export default app;
