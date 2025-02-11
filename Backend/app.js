@@ -11,11 +11,14 @@ dotenv.config({path :"./config/config.env"});
 app.use(
     cors({
     origin: ["https://mern-project-frontend-six.vercel.app"],
-    methods: ["POST", "OPTIONS"],
+    methods: ["POST", "GET", "OPTIONS"],
     credentials: true
     })
 );
 
+app.get("/", (req, res) => {
+    res.json("Hello Backend Connected");
+})
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
